@@ -1,41 +1,23 @@
-from settings import *
+from pychembl.settings import *
+from pychembl.db.auto_schema import *
 
-from chembl.db.auto_schema import *
-
-assays = session.query(Assays).yield_per(100).limit(1000)
-
+# loop over all assays containing the term "human" in their assay description
+assays = session.query(Assays).filter(Assays.description.like('%human%')).limit(1000).yield_per(100)
 for assay in assays:
-	print "%s %s" % (assay.description, len(assay.targets))
-	#os = assay.targets
-	#if len(os) > 1:
-	#	print len(os)
-	#for o in os:
-	#	print "  %s" % len(o)
+	print "- %s %s" % (assay.description, len(assay.targets))
 	
-#molecules = session.query(MoleculeDictionary).filter(MoleculeDictionary.molregno==480382).all()
-		
-#i = 1
-#for molecule in molecules:
-#	print '%s ------------' % i
-	#print record.source.src_description
-	#print record.doc.journal
-	#print len(record.doc.records)
-	#print record.molecule.structure.molfile
-	#print record.molecule.structure.standard_inchi_key
-	#for key in record.molecule.synonyms_by_type.keys():
-	#	print key
-	
-	#print ">>> %s" % molecule.structure.canonical_smiles
-	#print "    %s" % molecule.hierarchy.parent.structure.canonical_smiles
-	#print "    %s" % molecule.hierarchy.active.structure.canonical_smiles
+print "\n\n\n"
+
+# select all 'Kallikrein 14' target entries (only one), find the related assays and print 
+# activities and canonical SMILES of the ligand
+targets = session.query(TargetDictionary).filter(TargetDictionary.pref_name=='Kallikrein 14').all()
+for target in targets:
+	print target.description
+	for assay in target.assays:
+		print assay.description
+		print "-------------------------------"
+		for activity in assay.activities:
+			 smiles = activity.molecule.structure.canonical_smiles
+			 print "activity %s %s %s : %s" % (activity.relation, activity.published_value, activity.published_units, smiles) 
 
 	
-#	i += 1
-#	if i == 1000:
-#		break
-
-#print i
-
-#print s.chembl_id
-#print s.property
-#print s.compound_properties

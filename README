@@ -1,0 +1,60 @@
+REQUIREMENTS
+
+- a copy of the ChEMBL 09 MySQL dump installed on a MySQL database server
+- MySQL-python-1.2.3 (or 1.2.2)
+- SQLAlchemy 0.6.x (I am currently working with 0.6.6)
+- get pychembl from GitHub
+
+- Python 2.6 (other 2.x (x>=4) versions probably work, I haven't tried
+  3.x, probably it is not working there)
+
+
+INSTALLATION (this is a preliminary description)
+
+1. ChEMBL database: go to
+
+    ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_09
+
+   and download
+
+    chembl_09_mysql.tar.gz
+
+   Untar it and install it on your MySQL server
+
+2. MySQL-python: go to
+
+     http://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.3/
+
+   download 
+
+    MySQL-python-1.2.3.tar.gz
+
+   and follow the installation procedure described in the README file.
+   If you ever have accessed MySQL from python, you probably have this package 
+   already installed (as it is the most commonly used driver for accessing MySQL
+   from python).
+
+3. SQLAlchemy: got to
+
+    http://www.sqlalchemy.org/download.html
+
+   and follow one of the ways described there to install a 0.6.x version
+   (0.7.x may work but I haven't tested it yet)
+
+4. download pychembl from
+
+    https://github.com/markussitzmann/pychembl
+
+   unpack/untar the package, enter the created directory and make the pychembl
+   directory there accessible to your python installation (e.g. by copying it to
+   the site-package directory of the python installation).
+ 
+5. Enter this pychembl directory and adapt in "settings.py" the "sqlalchemy.url" with 
+   the credentials to your ChEMBL database at your MySQL server (i.e. replace "db_user",
+   "db_password" and "db_host" with the correct values).
+
+5. Take a look at some of the examples in examples.py ... a more elaborated 
+   documentation will follow.
+
+
+ 

@@ -155,7 +155,7 @@ mapper(MoleculeHierarchy, molecule_hierarchy_table, properties={
 })
 
 mapper(MoleculeDictionary, molecule_dictionary_table, properties={
-	'property': relationship(CompoundProperties, uselist=False, backref=backref('molecule', uselist=True)),
+	'property': relationship(CompoundProperties, uselist=False, backref=backref('molecule', uselist=False)),
 	'records': relationship(CompoundRecords, backref = 'molecule'),
 	'activities': relationship(Activities, backref = 'molecule'),
 	'structure': relationship(CompoundStructures, uselist=False, backref = 'molecule'),
@@ -186,7 +186,7 @@ mapper(Source, source_table, properties = {
 })
 
 mapper(Assays, assays_table, properties = {
-	'activties': relationship(Activities, backref='assays'),
+	'activities': relationship(Activities, backref='assays'),
 	'targets': relationship(TargetDictionary, secondary=assay2target_table, backref='assays'),
 	'target_associations': relationship(Assay2Target, collection_class=attribute_mapped_collection('target')),
 	'type': relationship(AssayType, backref='assays')
