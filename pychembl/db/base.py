@@ -21,5 +21,5 @@ except:
 
 engine = engine_from_config(settings, 'sqlalchemy.')
 Session = sessionmaker(bind=engine)
-session = Session()
+chembldb = Session()
 metadata = MetaData(engine)
