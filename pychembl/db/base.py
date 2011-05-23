@@ -15,9 +15,9 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm.collections import attribute_mapped_collection
 
 try:
-	from local_settings import settings
+	from pychembl.local_settings import settings
 except:
-	from settings import settings
+	from pychembl.settings import settings
 
 engine = engine_from_config(settings, 'sqlalchemy.')
 Session = sessionmaker(bind=engine)
