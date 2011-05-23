@@ -17,7 +17,7 @@ from sqlalchemy.orm.collections import attribute_mapped_collection
 try:
 	from local_settings import settings
 except:
-	pass
+	from settings import settings
 
 engine = engine_from_config(settings, 'sqlalchemy.')
 Session = sessionmaker(bind=engine)
