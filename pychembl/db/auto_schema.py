@@ -17,8 +17,9 @@ class Activities(object):
 
 molecule_dictionary_table = Table('molecule_dictionary', metadata, autoload=True)
 class MoleculeDictionary(object):
-	pass
-
+	parent = association_proxy('hierarchy', 'parent')
+	active_form = association_proxy('hierarchy', 'active')
+	active = association_proxy('hierarchy', 'active')
 
 molecule_synonyms_table = Table('molecule_synonyms', metadata, autoload=True)
 class MoleculeSynonyms(object):
@@ -124,6 +125,7 @@ class Version(object):
 atc_classification_table = Table('atc_classification', metadata, autoload=True)
 class ATCClassification(object):
 	pass
+
 
 define_daily_dose_table = Table('defined_daily_dose', metadata, autoload=True)
 class DefinedDailyDoseTable(object):
