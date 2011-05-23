@@ -8,6 +8,9 @@ REQUIREMENTS
 - Python 2.6 (other 2.x (x>=4) versions probably work, I haven't tried
   3.x, probably it is not working there)
 
+So far I have tested it on Linux using the configuration above; George Papadatos
+reported that it also works for him on Windows XP/Python2.7 and SQLAlchemy 0.7
+
 
 INSTALLATION (this is a preliminary description)
 
