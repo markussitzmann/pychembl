@@ -206,7 +206,7 @@ mapper(TargetDictionary, target_dictionary_table, properties={
 })
 
 mapper(CurationLookup, curation_lookup_table, properties={
-	'assay2target': relationship(Assay2Target, backref='curator')
+    'assay2target': relationship(Assay2Target, backref='curator', primaryjoin=curation_lookup_table.c.curated_by==assay2target_table.c.curated_by, foreign_keys=[curation_lookup_table.c.curated_by])
 })
 
 mapper(ConfidenceScoreLookup, confidence_score_lookup_table, properties={
