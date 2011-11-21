@@ -16,7 +16,7 @@ from sqlalchemy.orm.collections import attribute_mapped_collection
 
 try:
 	from pychembl.local_settings import settings
-except:
+except ImportError:
 	from pychembl.settings import settings
 
 engine = engine_from_config(settings, 'sqlalchemy.')

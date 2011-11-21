@@ -151,7 +151,7 @@ mapper(MoleculeHierarchy, molecule_hierarchy_table, properties={
 		backref='children'
 	),
 	'active': relationship(MoleculeDictionary, 
-		primaryjoin=molecule_hierarchy_table.c.active_molregno==molecule_dictionary_table.c.molregno,
+		primaryjoin=molecule_hierarchy_table.c.active_molregno==molecule_dictionary_table.c.molregno, foreign_keys=[molecule_hierarchy_table.c.active_molregno,],
 		backref='base_forms'
 	),
 })
